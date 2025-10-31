@@ -3,26 +3,26 @@
         version = "1.0"
     },
     ["windows|x64"] = {
-        ["cmake#f56260b5"] = {
+        ["cmake#31fecfc4"] = {
             repo = {
                 branch = "master",
-                commit = "84eac85f8e5f0a00a72f426b486983a62612bb97",
+                commit = "126412b89fb57322fcd77cbf65495b07a0bb8516",
                 url = "https://gitlab.com/tboox/xmake-repo.git"
             },
-            version = "3.30.5"
+            version = "3.31.6-msvc6"
         },
-        ["ninja#f56260b5"] = {
+        ["ninja#31fecfc4"] = {
             repo = {
                 branch = "master",
-                commit = "84eac85f8e5f0a00a72f426b486983a62612bb97",
+                commit = "126412b89fb57322fcd77cbf65495b07a0bb8516",
                 url = "https://gitlab.com/tboox/xmake-repo.git"
             },
             version = "1.12.1"
         },
-        ["spdlog#09c8c173"] = {
+        ["spdlog#9c36f0a9"] = {
             repo = {
                 branch = "master",
-                commit = "da016bf271a4a37cd9e89cf772b0d3d730767843",
+                commit = "126412b89fb57322fcd77cbf65495b07a0bb8516",
                 url = "https://gitlab.com/tboox/xmake-repo.git"
             },
             version = "v1.15.3"
