@@ -3,6 +3,7 @@ set_xmakever("2.8.2")
 
 -- includes
 includes("lib/commonlibsse")
+includes("extern/styyx-utils")
 
 -- set project
 set_project("sperg-helper")
@@ -28,6 +29,7 @@ set_config("commonlib_toml", true)
 target("sperg-helper")
     -- add dependencies to target
     add_deps("commonlibsse")
+    add_deps("styyx-util")
 
     -- add commonlibsse plugin
     add_rules("commonlibsse.plugin", {

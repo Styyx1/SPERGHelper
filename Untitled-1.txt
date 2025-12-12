@@ -1,0 +1,696 @@
+Skyrim Perk Enhancements and Rebalanced Gameplay v4.0
+by seorin
+
+Table of Contents
+0. Quick Start
+1. About
+2. Mod Features
+3. Configuration Options
+4. Required/Recommended Mods
+5. Installation
+6. Extras
+7. Compatibility
+8. Uninstalling
+9. Frequently Asked Questions
+10. Known Issues
+11. Future Plans
+12. Special Thanks
+13. Version History
+
+0. Quick Start
+You don't want to read all that below? Okay, here's what you do:
+1: Download and install required mods (SKSE: http://skse.silverlock.org/, Uncapper: http://skyrim.nexusmods.com/mods/1175, SkyUI: http://skyrim.nexusmods.com/mods/3863)
+2: Install via NMM or ModOrganizer to take advantage of the install script.
+ 2a: To install manually, unzip to your data directory, copy the SKSE folder from the SPERG folder to your data directory, then copy any applicable DLC patches.
+3: Activate the plugin files and play!
+
+
+1. About
+SPERG is a lightweight, fully configurable leveling overhaul. In large part, this means adjustments to perks. The entire perk system has been completely remade to increase the variety between trees and between character builds. Perks feel more interesting and worthwhile, becoming something you really look forward to getting as you level up. Players using SPERG often comment that the number of different characters they find fun and interesting to play has increased dramatically from the original game.
+
+The other half of SPERG's perk changes is the fan favorite autoperk system. Instead of needing to invest valuable perk points on boring and generic skill improvements, all skills increase in power on their own as they level - even skills which previously did not increase in power, like Destruction. Furthermore, unique bonus perks are automatically earned at 25, 50, 75, and 100 in each skill. These aren't game-changing powers, but they often help to distinguish each tree and reward the player for reaching a new milestone. In other words, they make leveling more fun.
+
+Aside from the major perk overhaul, SPERG also makes a number of more subtle changes to make leveling feel more natural and less like a grind. Magic skills increase when using staves, armor skills increase when you run around, metal items can be melted down into ore and ingots to increase materials available for smithing, and so on. Then there are purely additive changes, such as the addition of permanent stat gains from eating food. SPERG makes skills level up at more consistent rates, and it rewards you for actually playing the game normally instead of feeling like you need to let a mudcrab hit you for an hour to raise both your armor and restoration skills.
+
+As an avid Elder Scrolls fan, I designed SPERG to combine the best parts of Morrowind, Oblivion, and Skyrim all into one mod, while still being careful to limit the scope of the mod to only affecting the leveling system. This minimizes conflicts with other mods, and it also makes sure that no matter what I'm adding, everything will come together into a cohesive whole that makes Skyrim's leveling system feel fundamentally different. The end result is a game that just feels fun to play no matter how you choose to play it.
+
+
+2. Mod Features
+-Perks
+The perk system is completely redone. The new perk trees can be viewed in detail in the "perktrees.html" located in the readme folder.
+
+-Automatic Perks
+Each perk tree now has five perks which are gained automatically. The first is just a perk that makes the skill increase in power with skill level. All characters start with these perks. Extra perks are earned at 25, 50, 75, and 100 skill, granting small and mostly unique bonuses in a manner similar to Oblivion.
+
+-Completely Configurable
+SPERG is fully integrated with SkyUI's mod configuration menu. Every feature in SPERG can be adjusted to your liking or even removed, so you never have to worry about changes you don't like being bundled together with changes you do. Everybody can play the game exactly as they like it.
+
+-Salvaging
+Metal, wood, and leather items can be broken down into reusable components, which has two important effects on the game. First, it increases the available materials, making it much easier to keep your smithing leveled up at the same rate as the rest of your skills. Second, it increases the rewards from exploring dungeons or robbing rich manors, rewarding the player for actually playing instead of just grinding.
+
+-Quest Rewards
+Completing a quest now grants you a skill gain (chosen randomly from your five highest skills, ignoring any at or above 100). This makes most important quests feel a bit more rewarding and worthwhile, though several repeatable quests are not affected.
+
+-Perk Reset
+There is now a convenient and balanced way to reset your perks, allowing you to spend your hard-earned points differently the second time around. Doing this will cost you 40% of your health, magicka, and stamina (rounded down to the nearest 20), each of which will regenerate at a rate of 20 points per day until they are back to normal. The perk reset can be accessed through the menu.
+
+-Uncapper Integration
+It is highly recommended that you use the Skyrim -Community- Uncapper (see below) with this mod to balance the number of perk points you gain per level. However, if you use the .ini file included with this mod, there are several other beneficial changes. Skill gain is balanced to be more consistent across skills and feel less grindy than the default game (approximately 25% faster overall). There's also a slight change to stat gain on level: choosing health or magicka will also grant 2 carry weight, while choosing stamina will grant 5 carry weight (the same as previously) and 20 stamina (up from 10 in vanilla).
+
+-Spell Scaling
+All spells now scale directly with skill level. Destruction spells deal more damage, Illusion spells affect higher level targets, Restoration spells heal (or damage) more, and both Alteration and Conjuration spells last longer. At 100 skill, spells are twice as effective.
+
+-Better Staves
+Using staves now increases your magic skill as though you were casting the spell yourself, allowing low level mages to ease the leveling process by supplementing their small magicka pools with staff use. Furthermore, if you're using a staff to cast a spell you haven't learned yet, casting enough times will teach you the spell in question. With the Artificer perk from the Enchanting tree, you can even learn completely unique spells!
+
+-More Skill Gains
+SPERG adds a few different sources of skill gain for skills which tended to lag behind, or skills which are just not fun to level. Armor skills increase as you run, alchemy increases when you eat ingredients and use potions, and speech levels when you use shouts. There's also a perk to make Mage Armor a permanent spell that automatically levels your Alteration skill (when you get hit, and when you enter combat).
+
+-Useful Food
+In addition to making most random loot more enticing by being able to salvage it for components, SPERG also enhances the game's food by granting permanent gains to health, stamina, and magicka when eating food affecting each stat. Cooking is better than simply eating raw ingredients, and more expensive food is generally better than cheaper food. These stat gains are balanced with a soft cap, so eating food will never stop earning you stat bonuses, but the more you get the harder it becomes to get more.
+
+-Improved Unarmed
+Unarmed characters are now fully viable without having to install a monk style mod that violates the theming of Skyrim. Play a drunken Nord brawler and punch out your enemies!
+
+-Modular Support
+Advanced users who prefer a modular design can use supplemental files to overwrite individual perk trees. Between that and the configuration menu, SPERG can be made compatible with nearly anything.
+
+
+3. Configuration Options
+SPERG can be configured by an in-game menu for all users of SkyUI 3 or higher. Users who prefer the stock UI can use SkyUI-Away (http://skyrim.nexusmods.com/mods/29440) to keep the stock UI and still access SPERG's configuration menu. Configuration without the menu is not officially supported, but users comfortable with Papyrus may be able to read SPEConfigMenuScript.psc to learn what variables to set manually if so desired.
+
+All options are configured by default for the recommended settings, and the in-game menu does a good job of describing what each option does when you hover over it, making it easy to modify default behavior. Just start playing the game first, and then look back here if you have any questions about the more advanced options.
+
+Reinitialize Menu:
+If your menu isn't working properly at all, there are two things you can try to fix it. First, if the menu isn't showing up at all, type in the console "SetStage SKI_ConfigManagerInstance 1". This is not a SPERG command, but one for SkyUI to address menu problems. If you can't get it to work, please look for help from the SkyUI documentation. If the menu is showing up but has corrupted strings, make sure the game language is set to English (or another language for which you have supplied a translation file for the SPERG menu), and then enter in the console "set SPEReinitializeMenu to 1". Then save and load your game
+
+Ethereal Arrows Required:
+Many users feel Ethereal Arrows can conflict with the idea of a non-magical archer. Checking this option removes it as a requirement for the Eagle Eye perk. When this option is checked, you can take the Eagle Eye perk at 35 Archery skill or higher regardless of whether or not you have the Ethereal Arrows perk.
+
+Weapon Speed:
+Due to a bug or an oversight, Skyrim sets default weapon speed to 0 (0%) instead of 1 (100%). Thus, increasing weapon speed by 0.15 (15%) actually leads to swinging your weapon at 15% speed instead of 115% speed. To fix this, weapon speed abilities often add 1 to their effects (e.g. 1.15), but this causes problems when multiple weapon speed effects stack (1.15+1.15 = 230% weapon speed instead of the intended 130%). SPERG's weapon speed abilities do not add 1 as they should, meaning they stack properly, but they require a bug fix ability to add the base +1.
+
+By default, SPERG keeps track of what your weapon speed should be, and if it becomes too fast (generally >= 1 higher than it should be) it assumes something else is providing the needed bug fix and drops its bug fix ability. Using this option, you may turn the bug fix ability permanently on or permanently off. If set to disabled, all of SPERG's weapon speed effects from all sources will be disabled.
+
+Weapon Speed Tolerance:
+If you like, you can fine tune the automatic detection of the weapon speed script. By default, it looks for weapon speeds at least 1 higher than what SPERG expects, but if you have effects you know SPERG is not taking into consideration, you can alter the tolerance to make the detection more accurate.
+
+Use Custom Pet Name:
+The Best Friend perk is meant to be customizeable to allow players to make their pet truly their own. To that end, it's possible to name your own pet. You'll need to create a plugin for SPERG by first loading SPERG.esm in Creation Kit without any plugins selected as the active plugin, then edit the message (under the miscellaneous category) named SPEBF_CustomNameMessage. The title is set to "Custom Name" by default, and that's the value you need to change to whatever you want your pet name to be. Save your plugin, activate it, and then launch the game. Check the custom name option in the config menu and your pet will be re-summoned with its new name. As with all pet resummoning, your pet's inventory will be emptied into your own when this happens.
+
+Use Alchemy/Enchanting Label:
+The Knowledge Seeker and Glittering Prizes perks add menu options when you interact with alchemy and enchanting benches. If you have another mod that also places a menu on these items, it's likely that there will be two options to use the bench as normal. Checking these options removes SPERG's default option, getting rid of the extra one.
+
+Reset Aliases:
+Hopefully this option will never be necessary, but under some circumstances, it seems like quest aliases can randomly lose their attachment to the player. If the game does not properly update between versions, check this option and then exit the menu.
+
+Set Perk Points:
+Changing uncapper settings will not automatically change the amount of perk points you have available. Furthermore, it's possible to wind up with the wrong number of perk points due to a bug or mod conflict. This option is provided as a workaround for both issues. Just drag the slider to whatever number of perk points your character should have.
+
+Hardcore Mode: 
+SPERG was made to remain very close to vanilla Skyrim, and to that end, vanilla perks and abilities are never reduced in power. Hardcore Mode changes that. Under Hardcore Mode, most perks (vanilla and SPERG added) are significantly reduced in power. This results in approximately a 60% reduction in character power at the high end, though it has no effect on starting characters. It prevents end game content from becoming too trivial with a high level character, but it does so at the expense of a stronger feeling of character progression.
+
+Note that while ability values change, the descriptions do not, so enabling hardcore mode has the additional effect of obfuscating the exact details of many perks and abilities. They should all still do what they say, but you won't know whether a perk gives you +20% damage or +5%. The primary reason for this is simply technical limitations caused by using an in-game menu option instead of a separate .esp, but I also think it adds to the experience desired by the players most interested in this option.
+
+Uninstall:
+SPERG should uninstall very cleanly through the use of this function. You will need to uninstall it for each character who was using it, however. Furthermore, if you do uninstall, re-installing SPERG at a later date may cause bugs. Hopefully I've fixed all issues with that (no problems so far that I've been able to find), but it's always a risk with the way Skyrim stores data in the safe file. If you want to disable SPERG for bug testing purposes, keep a 'before' save that you can revert to after you finish troubleshooting instead of re-installing SPERG afterwards.
+
+4. Required/Recommended Mods
+
+Required:
+
+-Skyrim Script Extender (SKSE): http://skse.silverlock.org/
+This mod provides access to scripted functions that SPERG makes use of. It's also a requirement for the uncapper and for SkyUI.
+
+-SkyUI 3 or higher: http://skyrim.nexusmods.com/mods/3863
+Access to the in-game configuration menu requires SkyUI. This is vastly superior to other config methods, so I consider it a requirement. If you don't like SkyUI, you can use SkyUI-Away (http://skyrim.nexusmods.com/mods/29440) to use the config menu with the stock UI. Configuration without the menu is unsupported.
+
+-Skyrim -Community- Uncapper: http://skyrim.nexusmods.com/mods/1175
+Despite the name, SPERG does not require you to uncap your skills beyond 100. Instead, the uncapper is used to alter stat gain on level up and skill leveling rates. All of these changes are provided through an uncapper .ini that SPERG provides, and most are optional (feel free to configure your own .ini). The one non-optional change is that you must set it to only grant one perk every two levels. SPERG is balanced around this perk gain, and if you instead gain one perk per level as in vanilla Skyrim, you will be grossly overpowered.
+
+Default Uncapper Modifications:
+-Changes perks to one every two levels.
+-Adjusts skill rates to be more balanced with each other. Leveling overall is approximately 25% faster.
+-You now gain 2 carry weight when choosing health or magicka at level up.
+-You now gain 20 stamina when choosing stamina at level up.
+
+If you think the leveling rate is too fast and want it to be closer to vanilla speed while still keeping my balance changes, you can replace the values in [SkillExpGainMults] to whatever you prefer. The following values are balanced around weapon skills remaining at the normal rate while adjusting everything else to match (approximately 12.5% faster than vanilla):
+fAlchemy=0.9
+fAlteration=1.1
+fArchery=1.0
+fBlock=1.25
+fConjuration=1.35
+fDestruction=1.25
+fEnchanting=1.1
+fHeavyArmor=1.25
+fIllusion=1.25
+fLightArmor=1.25
+fLockpicking=1.1
+fOneHanded=1.0
+fPickpocket=0.6
+fRestoration=1.25
+fSmithing=1.5
+fSneak=1.0
+fSpeech=1.1
+fTwoHanded=1.0
+
+Recommended:
+-Unofficial SPERG Patches: http://skyrim.nexusmods.com/mods/34925/
+A few helpful compatibility patches to help SPERG work better with other popular mods.
+
+-Faster Mining: http://skyrim.nexusmods.com/mods/9465
+This would have been part of this mod, except someone else already did it exactly as I would have.
+
+-SkyTweak: http://skyrim.nexusmods.com/mods/33395
+A comprehensive in-game menu that allows you to customize a myriad of game settings.
+
+
+5. Installation
+ -Install SKSE (http://skse.silverlock.org), the Skyrim -Community- Uncapper (http://skyrim.nexusmods.com/mods/1175), and SkyUI (http://skyrim.nexusmods.com/mods/3863)
+ -Follow the install script (for NMM or ModOrganizer users) or unzip everything into your Data directory to install manually.
+  -If installing manually, copy the SKSE folder from the SPERG folder to your Data directory, then copy any optional DLC patches.
+ -Advanced Installation: If you prefer a modular design, see the below two sections for more information about the override folder.
+ -Activate any new plugin files and play!
+
+This is meant to be used on a new character, but there's a conversion function for older characters. Just make a backup save first, then give the game 20 seconds or so to initialize after first loading in and everything should be fine.
+
+
+6. Extras
+I've included some extra files in the SPERG folder for anyone interested. Most important are the readme files, particularly perktrees.html, which is the most thorough documentation available on the new perks. Next, I included my recommended uncapper settings and the optional DLC patches for users doing a manual install.
+
+Beneath the SPERG folder, you'll also find a folder called "Override", with one .esp file for each skill tree. These files are used to give SPERG a more modular design for advanced users who understand the nature of mod conflicts. Their basic function is to restore any perk tree to its original Skyrim status. Simply remove any perks you have in the tree, disable the tree via the in-game config menu, and then enable the appropriate override .esp file (it should come after SPERG in your load order for the override to take effect).
+
+Aside from that, I've also included a couple helpful things for other modders. First, I included all of my source scripts for anyone wishing to adapt them to their own mods. Second, I included the string translation file used for the mod configuration menu. If renamed and edited, this can be used for translators to quickly and easily translate the menu without needing to edit any scripts.
+
+
+7. Compatibility
+SPERG is extremely compatible with almost everything. Massive overhauls that touch nearly every aspect of gameplay will probably conflict in both minor and major ways, but almost all other conflicts are minor. Everything in SPERG can be turned off, so if you really want to make it work with another mod, there's probably a way.
+
+For advanced users, you can even use other mods that alter perks. Simply load the mod after SPERG in your load order, then use the config menu to disable the trees you're overwriting so SPERG ignores those trees. If the mods still don't play nicely together, you can take the additional step of using one of the .esp files in the override folder to erase SPERG's changes. Simply load it between SPERG and the other perk mod. It should function exactly the same as if you had installed the mod without SPERG at all. NOTE: Combining mods in this way can get complicated very quickly, so make sure you know what you're doing.
+
+For more specific details, here are mods I've been informed work (or don't):
+-Complete Crafting Overhaul (with SPO and the Weapons and Armor fixes) seems to work fine as long as SPERG is loaded later.
+-ASIS can cause some odd bugs because SPERG perks and abilities are not meant to be placed on NPCs. Most of the time, this shouldn't cause serious issues, but I recommend excluding SPERG from your ASIS patch entirely.
+-Phitt's Alchemy and Food Overhaul needs to be loaded before SPERG (just like CCO), but you also have to change something in the uncapper .ini to make your Alchemy level right. Change the SkillExpGainMult for Alchemy to around 20 if you want the skill to level at the normal rate.
+-Better Magic works in part. Because it's modular you can pick the parts that don't conflict and use them just fine. Better Master Spells should probably work fine, and I've heard that Better Dual Casting will also work, but you probably need to load it after SPERG.
+
+
+8. Uninstalling
+
+First, do not uninstall for troubleshooting purposes! Uninstalling a mod and then reinstalling it again on the same character can cause save game bloat as well as many unexpected bugs. If you're troubleshooting, keep a backup save to revert to after you've fixed your problem. If you choose to reinstall SPERG after uninstalling it and use it again on the same character, do so at your own risk.
+
+Because of the way Skyrim stores data in your save file, it's not recommended to simply remove the mod without running the uninstall process first. Running it is simple: just use the included config menu and look under the Advanced page. Check "Uninstall SPERG", then quit the menu and wait for the uninstall to process. Save once it's done and then repeat this process for every character who was using the mod. Once you've made new saves for all characters, exit the game and uncheck all plugin files associated with SPERG.
+
+Upon loading your characters, all perks will be reset and you will have the proper amount of perk points for your level. This is far more convenient than fixing your perks manually with the console. The first time you load your game, the papyrus log may show a small number of errors, but those errors should no longer be present in future saves (unless you reactivate SPERG, as mentioned above).
+
+
+9. Frequently Asked Questions
+
+-I have a great idea. Will you add it to SPERG?
+Probably not. There comes a certain point after which a mod has fulfilled its purpose and any further additions may cause it to creep into mod bloat territory. SPERG is at or a little bit past that line, so I hesitate to add more to it. However, I've tried to make it as easy as possible for other modders to expand and modify SPERG themselves, so if you post your idea, somebody else might like it enough to create a patch for it. Modding isn't difficult, so you can also take up the mantle yourself and make your idea a reality.
+
+-Will you create compatibility patches for other mods? What about just this one?
+No. My attention is fully focused on SPERG alone. I don't have enough time to dig into other mods, learn how they work, and then create a patch to combine them with SPERG. However, I've made it extremely easy for anybody to create compatibility patches. Try making one yourself, and if that doesn't work, you can ask nicely on the Nexus and somebody else may create a patch for you. I'm sorry to have to take such a hard stance on this, but my modding time is very limited, and I don't want anything taking away from what I have to give to SPERG itself.
+
+-Why are torch related perks in Lockpicking instead of Block? What does Pick Pocket have to do with poison damage?
+To allow for greater character variety, even non-combat skills give some combat benefits. This makes the game more forgiving if you level up from a lot of non-combat skills and the enemies begin to scale up. Each skill still has consistent theming, but the themes are somewhat more broad than they were in the original game. Lockpicking has taken on more of a dungeon diver sort of feel where torch related perks make sense, and Alteration affects magic as well as physical objects. It might seem like a stretch in some cases, but it's been carefully thought out.
+
+-Does it count as having your off-hand "free" if there's a readied spell in it?
+Yes.
+
+-How much damage is "lethal" damage? How much damage do Acid Splash and Blazing Bash do?
+Where possible, I try to give specific numbers so you know exactly what a perk will do for you. In cases where it says "lethal" I have omitted specifics because the damage ought to kill basically anything in the game (it's a 100x multiplier). However, these effects do not work on targets which are inappropriate to kill in one hit, like dragons. For Acid Splash and Blazing Bash, the damage scales based on your lockpicking skill, so it's impossible to give a specific number.
+
+-If I take Efficiency Expert, will spells be free to cast at 100 skill?
+No. These effects are multiplicative, meaning that at 100 skill spells cost 25% of normal.
+
+-How do I deactivate an armor spell after taking the Mage Armor perk?
+Just cast the same spell again a second time.
+
+-How does Spell Charge work?
+To activate it, you must start casting a spell but then continue holding the button instead of releasing to cast. The longer you hold the button (up until you see the blue glow effect on your character) the more powerful the spell becomes. For Destruction and Restoration spells, this affects magnitude. For Alteration and Conjuration spells, this affects duration. Illusion spells default to duration, but can be toggled to magnitude in the options menu.
+
+-How does Chain Casting work?
+It's similar to spell charge, only instead of gaining charge when you hold a spell before releasing, you gain charge by casting several spells rapidly. After three casts, you reach maximum charge. If you do not cast any spells for 6 seconds, the charge will expire. At maximum charge, dual casting a spell will initiate an even stronger effect (100% increased damage, destruction spells cost no magicka) that lasts for 5 seconds. Once this effect expires, all charge is lost and must be built up again from the beginning. I tried to make this simpler, but it doesn't seem possible without editing spells directly. Think of it like spell combos - cast normally until you charge up, then trigger your finisher to unleash maximum power.
+
+-Why did a skill just go up?
+SPERG grants many additional sources of skill experience as well as granting an extra skill gain on quest completion. Phantom Beasts cast fear spells that level your illusion, Mage Armor gives you experience when you are hit or when you enter combat, armor skills level up as you run around, best friend pets grant speech experience when they come back from selling, and alchemy levels up when you eat ingredients or drink potions. If you think a skill is going up when it shouldn't, look in the options menu for a way to turn it off before reporting it as a bug.
+
+-Why can't I make an Arcane Converter even though I have the soul gems?
+The soul gems need to be filled. When used in crafting recipes, the game does not use different text for empty and filled soul gems, so even though it's misleading, there's nothing I can do short of renaming the gems themselves.
+
+-Are some perks in the wrong tree, like perks related to potions in Enchanting?
+Skyrim originally used a very isolated skill design where one skill had a minimal influence on other skills. This makes it easy to know exactly what a skill does, but the lack of skill synergy also makes for very uninteresting character builds. Enchanting will always be Enchanting no matter what other skills you take.
+
+SPERG mixes things up a bit by placing complementary (but thematically appropriate) perks into each skill tree. For example, of the three crafting skills, each have perks that benefit the other two. This makes character builds more complex and interesting, and it makes every perk tree desirable in some way. It's much harder in SPERG to take one look at a tree and discard it as useless; there's almost always something there that could benefit you, no matter what kind of character you're playing.
+
+-Why are there so many "known issues"? Is this mod really buggy?
+On the contrary, I know about them because of how thoroughly I test the mod, and I write notes about them so users can know exactly what's going on if something doesn't seem right. The vast majority of them are things you would never notice during normal gameplay or things which don't have a significant impact, but are nevertheless worth noting.
+
+
+10. Known Issues
+-Some quests do not give skill points. Others may give a second point at random. This is due to how the miscellaneous stat works, so fixing it would require editing quests directly or a much more intense script. In both cases, the drawbacks are too significant for such a small benefit, so this functionality will stay mildly buggy. You can tweak the behavior in the menu a little bit, but all options depend in one way or another on the numbers listed in the quest stats tab, so anything that affects those will affect SPERG's quest rewards.
+
+-After taking the Concentration perk, there is sometimes an extremely brief period of extra regeneration after combat ends. The event used to detect the end of combat is broken, and the workaround sometimes has a slight delay, but it's barely noticeable.
+
+-Essential NPCs that "die" when crippled will stand up and give you a bad look instead of staying properly crouched. I neither can nor want to fix this.
+
+-Ethereal Arrows can be used even if you don't have enough mana. While I could technically fix this, the implementation would be very annoying. Instead, I have balanced the cost and power of the arrows to account for this.
+
+-Ethereal Bolts do not cost mana to fire, and they don't automatically replenish themselves when you run out. The same event that works for bow shots does not work for crossbow shots, so you must manually force your bolts to replenish by de-equipping and re-equipping your crossbow. For the same reason, the mana cost is paid up front instead of with each shot. If this is annoying, try using the menu option to bind a key for creating ammo.
+
+-Light Burden does not change your horse speed if you purchase the perk while riding a horse. Just dismount the horse and the speed will be fixed when you get back on.
+
+-After taking the Iron Will perk, enemies no longer use Unrelenting Force. This is, in a sense, working as intended. The combat AI avoids using effects you're immune to.
+
+-Hit effects still play while in spectral form. This is a design choice. Many spells don't function on ghosts (like invisibility, or summon spells) and I favor functionality over form.
+
+-Ghostwalk temporarily gives you the Light Foot perk when invisible. This is intentional. Ghosts shouldn't set off traps (they're immune anyway), and the easiest way to accomplish that is by temporarily granting the Light Foot perk. It looks weird if you pay close enough attention, but it functions properly.
+
+-Ghostwalk (rarely) causes spells to fail, and the ethereal effect breaks when casting. As mentioned above, many spells don't function on ghosts. To circumvent that, the effect tries to end early when you start casting, but spell conditions only poll once a second, so it's possible (though unlikely) to get a cast off before the effect ends. If you start casting and don't release, however, you may notice that you are no longer ethereal while casting.
+
+-Charging a spell with the Spell Charge perk doesn't have any effect when firing at very distant targets. Spell magnitude is calculated when the spell is applied, not cast. To account for this, the charge buff lasts for an extra second after casting, but it won't affect the spell if it takes longer than that to reach its target.
+
+-After casting a charged spell with the Spell Charge perk, all spells seem more powerful in the spell window. See above. The altered values return to normal after one second.
+
+-After taking Intense Flames, Deep Freeze, or Disintegrate, concentration type spells added by mods will sometimes refuse to stop casting. This is a strange side effect of the double casting feature, and it will affect any elemental concentration spells that aren't specifically discluded (i.e. spells from mods). The effect ends when you run out of mana, press 'R' twice to lower and then raise your hands, or type "player.interruptcast" in the console. More permanent fixes can only be made with a patch to improve compatibility between SPERG and the spell mod being used.
+
+-Phantom summons and the Spirit Echo will re-summon themselves if you try to summon too many creatures in combat. This can cause a bit of visual weirdness, but otherwise is working as intended. It's a bug fix for a bug that allowed you to use Phantom Beast as if it were the Twin Souls perk, summoning extra creatures that override your phantom summons.
+
+-Sometimes phantom creatures do not properly re-summon themselves when overwritten by another summon. I've seen this happen, but I can't reliably reproduce it. It probably has something to do with the timing of certain scripts under certain conditions. If this behavior is undesired, simply sheathe and re-draw your weapon and it'll fix itself.
+
+-Sometimes phantom creatures remain after combat. I've heard this reported by a small handful of users, but I have never been able to reproduce it. I believe it's a mod conflict of some kind, but I can't imagine what or how.
+
+-Some quests (particularly those in the College of Winterhold) think you don't have a certain spell even when you do. This is most notable for the entrance test if it asks you to summon a flame atronach and you have the elemental summoning perks - either remove the perk temporarily or load your game to get a different test. This bug also causes you to get an extra ward spell during the ward demonstration, but either the extra spell or the SPERG version will work for the test. The extra spell can be removed via the console or by turning SPERG's ward spells off and then on again.
+
+-Use of the Inside Man perk to clean custom enchanted items will remove the custom enchantments from the items. Clean your stolen items before enchanting them! This does not affect items that come pre-enchanted.
+
+-Uninstalling and then reinstalling on the same character can cause unpredictable errors and is not recommended for any mod, including this one.
+
+
+11. Modding SPERG
+SPERG is meant to be deconstructed, copied, modified and expanded upon. The modding community is at its best when authors are open with their work in the same way that Bethesda has opened up their work for us to play with. Most of us started by seeing how they did things, and I'd be thrilled if someone learned something just by taking a look at SPERG. I'm also happy to see modifications to SPERG, compatibility patches, etc. To that end, here are some basic tips to help you with modifying SPERG.
+
+SPERG Events:
+Perhaps one of the most useful features to take advantage of in SPERG are the custom events used via a nearly undocumented feature in SKSE. To use these events, you need to register for them with the RegisterForModEvent function. The format is RegisterForModEvent("EventName", "FunctionName") where EventName is the name of the custom event, and FunctionName is the function in your script that gets called whenever that event is received. The function must be declared later in the script like this:
+
+Function FunctionName(string eventName, string strArg, float numArg, Form sender)
+
+eventName is the name of the event being received, strArg contains any string information passed from the event, numArg contains number information passed from the event, and sender is the ID of whatever sent the event (an actor, objectreference, quest, enchantment, whatever). Use this to create your own events, or hook into existing SPERG events, listed below.
+
+SPE_LockBash: Fires when another actor has detected the player's lock bash. sender is the actor who noticed.
+
+SPE_UpdateUnarmed: Fires at the end of brawls (in auto-brawl mode) and when making certain selections in the config menu. It informs the script managing unarmed to check unarmed damage buffs (if strArg is "BuffsOnly") or check all unarmed variables and equip the fake unarmed weapon as necessary (if strArg is "FullReset").
+
+SPE_OnHitEvent: Fires when the player is hit outside of a brawl. It does not fire during brawls to avoid the brawl bug. numArg contains several flags from the OnHit event all rolled into one number to make passing them easy. abHitBlocked is 1, abPowerAttack is 2, abBashAttack is 4, and abSneakAttack is 8. So if numArg was equal to 7, it would indicate that the hit was blocked by the player, it was a power attack, and it was also a bash attack. 10 would indicate it was a sneak attack and a power attack.
+
+SPE_OnMeleeHitEvent: Same as above, but does not fire on spells and projectiles.
+
+SPE_OnBlockedHitEvent: Same as above, but only fires on melee hits which have been blocked by the player.
+
+SPE_ListsCleared: Fires when a patch updates. SPERG includes a default script (SPEPatchUpdateQuestScript) that allows users to easily make patches that won't interfere with other patches. When such a patch updates, it clears changes on any FormLists it modifies. This can clear changes from other patches, too, so it sends an event that other patches will catch so they know to re-add any FormList changes they made.
+
+SPE_UpdateHaste: Fires when the player changes weapon speed settings, or when certain perks are taken. Tells the weapon speed script to re-calculate the player's weapon speed.
+
+SPE_UpdateGameSettings: Fires when the player changes Good Listener modes or takes perks that modify game settings. It just tells the script to update game settings as necessary.
+
+SPE_SurgeonActive: Fires when the player takes the Surgeon perk. To avoid unnecessary scripting, the script which adds permanent stats when drinking potions made with certain Surgeon-specific ingredients will lie dormant until activated by taking the perk.
+
+SPE_OreHit: Fires when the player strikes ore with a pickaxe. It's used to add extra ore from the Prospector perk, but it might have other uses. sender is the ore being struck.
+
+SPE_SkillUp: Fires when the player gains a level in any skill. strArg is the skill name and numArg is the level the player has in that skill. So if the player advanced from 39 Alchemy to 40, strArg would be "Alchemy" and numArg would be 40.0.
+
+SPE_StaffCast: Fires when the player casts a spell using a staff. sender is the staff enchantment, and numArg is the player's health (useful if a staff should only grant exp if the player has HP to heal).
+
+SPE_TemperanceClearBuffs: Fires when the duration of Fortify Stamina granted by the Temperance perk has expired.
+
+Config Events: Many events only fire as part of the config menu, letting certain scripts know to update themselves when the player changes related options in the menu. There shouldn't be a need to use these, but they're documented here anyway just in case.
+
+SPE_HardcoreOn: Fires when the player turns hardcore mode on. Affects many scripts.
+SPE_HardcoreOff: Fires when the player turns hardcore mode off.
+SPE_ResetArmorExp: Fires when the player changes the armor exp settings in the config menu.
+SPE_UpdatePerkLists: Fires when the player changes autoperk or individual tree settings.
+SPE_EtherealAmmoSwitch: Fires when the player changes between manual and auto modes.
+SPE_EtherealAmmoRegister: Fires when the player binds a key to Ethereal Ammo, with numArg containing the key code.
+SPE_EtherealAmmoClear: Fires when the player activates auto mode, clearing any bound keys.
+SPE_ARKeyUpdate: Fires when the player changes options related to the Assassin's Reflexes perk.
+
+Condition Events: The following events fire based on player conditions detected through spells. This allows scripters to access conditions in scripting that are normally only available in the editor.
+
+SPE_CombatStart: Fires when the player enters combat.
+SPE_CombatStop: Fires when the player leaves combat.
+SPE_DualCastStart: Fires when the player begins dual casting.
+SPE_DualCastStop: Fires when the player stops dual casting.
+SPE_RunStart: Fires when the player starts running (not sprinting or walking).
+SPE_RunStop: Fires when the player stops running.
+
+Custom Conditions:
+It's easy to add your own conditions to this list. Simply create a magic effect and add the SPEConditionEvent script to it. Set the StartEventName string variable to the event you want to fire when the condition turns true, and StopEventName the event you want to fire when the condition turns false. Attach this effect to a spell with the condition you're trying to detect. So, for example, SPERG has the script filled out with the "SPE_CombatStart" and "SPE_CombatStop" events on an effect with the IsInCombat == 1 condition. You can create events using any set of conditions possible in the editor.
+
+Making SPERG Patches:
+There are some perks which need specific information to function correctly, so I've tried to make it as easy as possible for users to add that information via a patch plugin. Create a new .esp with SPERG as a dependency, then create a quest that's set to RunOnStart. Attach the SPEPatchUpdateQuestScript script to the quest and hover over the various properties so you know how to fill them out (they're well commented). Close the quest, then re-open it and add a reference alias pointing to the player. Attach SPEPatchUpdateAliasScript and point the lone property to the quest itself (this will not work if you don't close the quest once after attaching the quest script). Now your patch can easily modify the necessary leveled lists as well as handle version updates.
+
+Important note: Many lists depend on a certain order to operate. The script that changes these lists adds items in reverse order (so the last item on your list gets added to the SPERG list first). When modifying these lists (like the AA lists) make sure to take this backwards order into account, and make sure that entries in each list that correspond to one another have the same FormList index. Using Ancestral Awakening as an example, to add a new race you'd add a list to SPEAARaces with the vampire race at index 0 and the normal race at index 1, then you'd have the spells for that race added to SPEAASpells with a 0 and 1 index. If the indices don't match, it won't work right.
+
+Lists which may need updating:
+-SPEIngredientsGood and SPEIngredientsBad. The former contains alchemy ingredients with positive effects, and the latter ingredients with negative effects. These two both affect the Wortcraft perk.
+
+-SPEAARaces and SPEAASpells. The former contains a race and the vampire version (in that order), and the latter contains the two spells which will be added when the player takes the Ancestral Awakening perk. There must be two races and two spells.
+
+-SPEArtifactWeaponEnchantList contains the enchantments used for various artifact weapons. These are the weapons which will consume no charge when the Artificer perk is taken.
+
+-SPEConcentrationListFlame, SPEConcentrationListFrost, and SPEConcentrationListShock contain spells (usually conc type spells) which should be omitted from the dual cast function of the top tier elemental perks in the Destruction tree. Add any new conc spells to these lists so they don't bug out and refuse to stop casting.
+
+-SPEProspectorList is a list of items which can be duplicated by the Prospector perk when the player is mining. Add new gems and ores here.
+
+-SPERitualSpells contains the master level "ritual" spells that require both hands and a lot of time to cast. Spells in this list may be cast instantly if the player has the Master level Alteration autoperk.
+
+-SPESoulGemsEmpty and SPESoulGemsFilled are lists of the game's soul gems. These will need to be modified if using a mod which adds new soul gems to the game so that the Preserver and Soul Reaper perks function properly.
+
+-SPESurgeonDeathItemList and SPESurgeonLootList are one-to-one lists affecting the Surgeon perk. The former contains the leveled item given as a reward on creature death while the latter contains the leveled items that will be added to those lists.
+
+-SPETurnUndeadSpells is just a list of all turn undead type spells in the game, used for the Exorcist perk.
+
+-SPEWaterbreathingEffects contains any effects which should trigger Water Walking when the player has the Adapdation perk.
+
+Adding new staves:
+Create a quest and attach SPEStaffLevelingQuestScript. Fill out the properties (they are well commented, hover over them to see notes) and set the quest to run on startup. Provided you fill out the properties correctly, this will add any staves you want to the staff leveling system.
+
+Adding new items to the Glittering Prizes perk:
+First, you need to create the alternate versions of the item you're adding. Then you should add temper recipes for those items (if appropriate) to make sure the player can improve them with their Smithing skill. Finally, you need to add recipes to convert between the different item types. See all of the recipes beginning with "SPEGP_" for examples of how to do it. At a minimum, your recipes should use the WICraftingEnchanting keyword and check for the Glittering Prizes perk. You may also wish to check to make sure the player has the artifact in question before showing them recipes that can change its form.
+
+Adding new pets to the Best Friend perk:
+This is possible, but it's really quite involved. I won't offer a full tutorial on it because you should really know what you're doing before attempting it. You'll need to create a new race, new armor addons, a new skin, and finally the pet itself, then integrate all that with the perk by adding it to the necessary array. If you want it selectable in the menu, you'll also need to edit SPEConfigQuest, and if you do *that*, you'll need to provide an interface translation file for your mod, because SPERG's will be ignored when your mod overwrites the config quest. It's much easier to just modify an existing pet, but try to replace a pet with similar attack speed so it doesn't do too much or too little damage.
+
+
+12. Special Thanks
+-Moyrie for helping me have confidence in this mod even in its very rough early stages.
+-renketsu0 (author of Attack Speed Mod: http://skyrim.nexusmods.com/mods/28456) for helping me figure out the weapon speed bug.
+-Thoddy398 for his German translation and help with the fomod installation script.
+-GaistHeidegger for his help with fixing several minor conflicts with USKP.
+-Khyron for uploading a patch to fix the Dragonborn smithing bug to hold users over until I made my own.
+-LgEnder for the unofficial SPERG patches (http://skyrim.nexusmods.com/mods/34925/), help with the Baby Mammoth meshes, and plentiful help on many other aspects of the mod. SPERG wouldn't be the same without him.
+-Internet Friend for providing me with awesome Bound Bolt meshes.
+-GrimyBunyip for a lot of very helpful technical advice.
+-SaGa59 and Internet Friend for the Ethereal Bolts meshes.
+
+13. Version History
+
+1.0:
+-First publicly released version!
+-Fixed the way critical hit damage works. Crits now deal substantially more damage and scale with skill.
+-Tweaked the weapon specialization perks for axes, maces, battleaxes, and hammers.
+
+1.1:
+-Fixed a bug where stacked haste effects pushed weapon speed way above the intended values.
+-Readjusted perks affecting haste to be better balanced after the bug fix. See perk trees for specifics.
+-Changed the skill requirements for most perks to create a better spread throughout all skill levels. Perk points should no longer pile up so severely on new characters. See the perk trees for specifics.
+-Paralyzing Strike and Warmaster now have a 75% chance to paralyze (up from 25%). This is more fitting for a 100 skill level perk.
+
+2.0:
+-Fixed a bug where the stamina bonus on Extra Pockets was not working correctly.
+-Fixed a bug where the increased duration from Stability also affected shouts and potions.
+-Redid perks affecting Bound weapons. Now each rank increases damage as well as adds a new ability (Soul Trap, Banish, and then new elemental enchants).
+-In the Speech tree, combined the Bribery and Convincing perks into one.
+-Skill level requirements adjusted in most trees, particularly those with new perks.
+-Fixed a typo in the Bladesman perk description.
+-Converted the loose files into a .bsa archive for easier installation and removal.
+-Re-coded the Elemental Fury shout to avoid the haste stacking bug. As a side effect, Elemental Fury can now be used on enchanted weapons and is much more useful as a result.
+-Improved the Suggestion perk: Now doubles the effect instead of adding 12, raising the maximum affected level from 37 to 50.
+-Changed the Frost Armor perk. Instead of a 5% chance of paralysis when attacking, it's a 100% chance for a 50% slow effect when struck in combat.
+-Changed the dagger damage bonus in Assassin's Blade to 50% (down from 100%) to account for new perks which are more interesting than just straight damage.
+-Fixed the Fists of Steel perk. It now works properly, but damage overall has been lowered to just below that of one handed swords.
+-Fixed several on-hit effects from blocking other effects even when they didn't proc. This is an engine limitation (or bug?) that affected several vanilla perks, such as Disarming Bash and Paralyzing Strike. It is still only possible to proc one effect at a time, but at least an effect that does not proc won't block other effects that potentially could.
+-Swapped Reflect Blows (now Riposte) with Deft Movement (now Ignore Pain). The change better fits each tree's emphasis on offense or defense, and the perks are such a high level that even light armor users should be at or near the armor cap by that point anyway. Both perks have also increased in effect (40% chance to reflect or 20% chance to ignore damage).
+-The Necromage perk no longer affects potions and buffs on your own character when playing as a vampire.
+-Reduced the damage bonus on Rune Master from triple damage down to only double damage.
+-Fixed a bug that prevented Dual Savagery from properly applying haste.
+-When using the optional .esp, the soul gem stacking bug should now be fixed.
+-The different ranks of Enchanter now have the appropriate skill requirement and can no longer be bought early.
+-Added 31 completely new perks, listed below.
+
+New Perks:
+
+Archery:
+-Ethereal Arrows: Firing a bow without any arrows equipped will fire an ethereal arrow from your magicka pool.
+-Survivalist: Most wild animals are friendly until attacked. Gain use of the Hunter's Sight lesser power.
+-Sniper: Bow attacks are guaranteed to critically hit when firing from out of combat.
+-Head Shot: Critical hits with a bow have a 10% chance to deal lethal damage. All weapons are 5% more likely to critically hit.
+-Knee Shot (replaces Bullseye): Attacks with a bow have a 15% chance to cripple the target for 12 seconds.
+
+Heavy Armor:
+-Thick Padding: When you are wearing mostly heavy armor, arrow damage is reduced by half and frost resistance is increased by 20%.
+-Mounted Knight: Attacks from horseback deal double damage.
+-Wall of Iron: When you are wearing mostly heavy armor, enemies that strike you in melee occasionally stagger.
+-Warded Plate: For each piece of heavy armor equipped, there is a 5% chance for incoming fire, frost, and shock spells to deal no damage (maximum 20% chance).
+
+Light Armor:
+-Light Burden: Horses you ride move 50% faster.
+-Insulating Wards: For each piece of light armor equipped, potions and armor spells have a 10% longer duration (maximum 40% increase).
+-Strategic Retreat: When an attack brings your health below 20%, you gain a burst of speed for 10 seconds. This effect can only occur once every 30 seconds.
+-Skirmish Tactics: Perks which affect power attacks have a lesser effect on regular attacks as well.
+
+Lockpicking:
+-Inside Man: Allows access to inconspicuous chests placed outside of town jails. These are used for laundering stolen goods and paying discounted fines.
+-Blinding Bash: Bashing opponents with a torch gives their attacks against you a 30% chance to become a glancing blow (10% damage) for 8 seconds.
+-Dungeon Delver: Chaurus, skeevers, and spiders are friendly until attacked. Gain use of the Dungeon Light lesser power.
+-Blazing Bash: Fire damage from your torch bash is significantly increased and may cause opponents to run in fear.
+-Dwemer Engineer: Dwemer Automatons are friendly until attacked. Grants 30% fire resistance and increases the variety of dwemer scrap metal that may be melted into ingots.
+
+Pickpocket:
+-Acid Splash: As long as one hand is free, melee attacks deal 50% more critical damage and have a 20% chance to deal extra poison damage over 3 seconds.
+-Purse Snatcher: Silently harm enemies by placing poisons in their pockets.
+-Blade Grasp: As long as one hand is free, melee attacks deal 20% more damage and you have a 10% chance to disarm attackers that strike you in melee.
+
+Sneak:
+-Keen Eye: Dagger attacks made from out of combat are guaranteed to critically hit.
+-Heart Seeker: Sneak attacks have a 10% chance to deal lethal damage.
+-Assassin's Reflexes: Grants the Assassin's Reflexes lesser power, which slows time in exchange for stamina, but only while sneaking.
+
+Speech:
+-Trained Voice: Shouts are 50% more powerful and last 30% longer.
+-Legendary Skald: After shouting, only half the normal time passes before you can shout again.
+
+Enchanting:
+-Magic Dust: Doubles the duration of all potions. Potions which fortify a crafting skill last ten times as long.
+-Imbue Potion: All potions are 50% more effective.
+
+Illusion:
+-Calming Presence: Giants, mammoths, ice wraiths, and trolls are friendly until attacked. Gain use of the Tranquility lesser power.
+-Chameleon: Invisibility spells last twice as long and also silence movement.
+
+Restoration:
+-Concentration: Magicka regenerates at its full rate even when you are in combat. Requires SKSE.
+
+2.1:
+-The effect shader for Acid Splash now persists until the effect ends.
+-Acid Splash is now correctly labeled in the star diagram screenshot, instead of using its older, dumber name.
+-Fixed various other minor documentation typos.
+-Moved Ethereal Arrows to 25 Archery (down from 30) to avoid unlocking two perks at once.
+
+2.2:
+-Fixed a rather unfortunate bug where several perks were not correctly displaying their requirements, and randomly refused to let you buy them.
+
+2.3:
+-Fixed an incorrect description on Dwemer Engineer. It provides shock resistance, not fire resistance. The perk functioned correctly, but the description was incorrect.
+-Ethereal arrows will no longer persist even when you don't have a bow equipped, however, there is now a slight (0.1 second) delay for them to be equipped after you close your menu. This is the result of using a much more secure method to equip them that is less likely to cause unexpected bugs.
+
+2.4:
+-Steady Hand should now grant the appropriate amount of time slowdown.
+-The description for Dwemer Engineer now appropriately says 'shock' instead of 'fire' in the documentation, too.
+-Ethereal Arrows no longer equip themselves if you remove your quiver after de-equipping your bow or use a mod that automatically de-equips your quiver.
+
+2.5:
+-Stability should no longer affect spells it obviously shouldn't (i.e. Voice of the Sky). There are probably still a few exceptions, though, and I eagerly await finding out what they are.
+-The description for the Ethereal Arrows script in the source code now says what the spell actually does.
+-New feature: perk reset. More information can be found in the description section.
+-New Archery perk, Knockout: Bashing with a bow briefly knocks the target out. This ability can only be used once every 15 seconds.
+-By popular request, you can now turn off automatic perk gain. See the description section for details.
+
+3.0:
+
+Fixes:
+-Fixed the Allure perk to no longer make edits to the quest and scripts related to player sleeping. You may notice a slight change to how the perk works, but the overall effect is the same. This improves compatibility with other mods (like the Unofficial Skyrim Patch) and makes it no longer stack with the Lover stone.
+-Removed a few obsolete (i.e. "dirty") edits to vanilla data, reducing the potential for conflicts.
+-Fixed knockback effects to not work on actors immune to unrelenting force, just in case it would cause problems.
+-Frost Armor and other on-hit procs no longer affect friendly actors.
+-Ethereal Arrows no longer override bound arrows.
+-Adjusted critical hit damage to scale more linearly with weapon skill. This has the benefit of going up gradually as your skill raises instead of in sudden bursts at each tier. However, the overall max damage is now 3x (down from 3.5x).
+-Melee attack speed changes now show up as a haste buff in the active magic effects window.
+-Cleaned up a few scripts which changed actor values through scripts instead of abilities. This reduces the chances of things going wrong when loading save files or removing the mod.
+-Removed a duplicate reference in the alternate version of the Hall of Countenance.
+-Legendary Skald now properly works with the existing spell effect instead of re-inventing the wheel with its own script implementation. In related news, I am an idiot.
+-Fixed a crash bug with the Vampire Lord perk tree caused by unintentional edits to Actor Values due to a Creation Kit bug. This fix is likely to have unintended consequences, so let me know about any weirdness you discover.
+-Concentration no longer affects NPCs.
+-Resetting your perks now properly resets perks which require a quest to function (Extra Pockets, Survivalist, etc).
+-Fixed a rare bug that allowed haste values to stack in a way that was unintended, turning you into a blender. New haste values now have a very slight delay before applying.
+-Fixed a UDR in the optional .esp. Whoops! If you don't know what that is, don't worry about it.
+-Acid Splash should never have worked during brawls, but now it really, really shouldn't. If it still does let me know.
+-Several abilities that had a % chance to occur were occurring exactly 1% more often than they should have. All such abilities should now occur exactly as often as the text says they do.
+-Characters who previously had Stability will receive an extra perk point upon first loading the game.
+-To avoid needless vampire death, vampires will no longer automatically get teleported outside after resetting their perks.
+-Skullcrusher no longer has a 100% proc rate. Uh... oops.
+-Imperial Light armor and Ebony armor now grant the proper bonuses for their respective Matching Set perks.
+-Added several missing perks to the perk reset function, so everything should reset properly now.
+-Fixed the level scaling of phantom beasts to be more consistent.
+-Frost Armor and other on-hit effects no longer work during brawls. They now also check the SPEAuras global, giving them an off switch just in case.
+-Importing a character will no longer give you 255 perk points if you have more perks than should be possible. This should only have affected users who used a mod or a console to add extra perks.
+-Chain Casting no longer triggers on shouts, enchantment, or alchemy.
+-Steel no longer benefits from the Steel Smithing perk when upgraded, so it now has the normal maximum of a x2 temper bonus from smithing perks instead of double dipping to get x4.
+-A similar bug was fixed for Dawnguard armors, but requires a separate patch file (see below).
+-ASIS users will no longer suffer a crash to desktop after killing Falmer shamans. Yeah. That happened.
+-Shield tempering bonuses are now included in the Weapon Smithing perk. Previously, they did not receive a tempering bonus from any perk.
+-If a phantom beast, weapon, or spirit echo are unintentionally unsummoned, they will now re-summon themselves.
+-Created alternate versions of Ranger, Quick Shot, Bladesman, Fighting Stance, Great Swings, and Ward Absorb. This is because these perks are available to many NPCs and could potentially cause problems, so this was a pre-emptive bug fix. It may also solve a few minor bugs that have been hard to reproduce and fix.
+-Cleaned out a few dirty edits, but nothing serious. Remaining flagged edits probably shouldn't be removed.
+
+Tweaks:
+-Changed several perks to further differentiate one and two handed combat styles. Two handed weapons should now feel much more brutal and powerful.
+-Changed "Dungeon Light" to "Dungeon Sense". Instead of copying a basic spell anyone can cast, it now shows a few different types of creatures through walls.
+-Inside Man now has two tiers of pricing. Most transactions still cost 200 gold, but if an item or a fine exceeds 2000, the bribe minimum increases to 1,000. Any number of items below 2,000 gold will not trigger this, and any number of items above 2,000 all cost the same, so there's no need to budget what items you throw in.
+-Added a special bonus effect to Dwemer Engineer. It is intended to be secret.
+-Lethal damage no longer works on essential actors or dragons.
+-All high-end (60+ skill required) one and two handed weapon perks now function only when the appropriate weapon type is equipped. I want to allow some crossover for experimentation, but I don't want players feeling like they should grind up two weapon types because it's most effective. Perk descriptions have had their wording clarified to make these changes obvious.
+-All spells now scale directly with skill level. Destruction, Illusion, and Restoration spells have double the magnitude at 100 skill, while Alteration and Conjuration spells have double the duration.
+-Because of the above, spell magnitude increases on ranks of Destruction, Restoration, and Illusion, as well as the Illusion perk Suggestion have been removed. These effects are not gone, they just scale more directly with skill.
+-Stability has been changed to Efficiency Expert, in part due to the spell scaling change.
+-Run speed effects have been reduced. Purse Snatcher is now 30% (down from 50%), and Strategic Retreat is 60% (down from 100%).
+-Mage armor now gives all magic armor spells an indefinite duration, however, the unarmored bonus is slightly lower (x4, down from x5).
+-The exploding chicken now casts a more violent spell than the phantom chicken, allowing you to hit nonhostile targets with the spell version.
+-Switched over to a more robust updating system. Updates should be smoother from now on, even in beta versions.
+-Smithing's skill exp rate is now 1.7x, down from 2x. This only applies if you're using my uncapper values, and if you don't want it, just edit it back or keep using the old version.
+-Warmaster's lethal damage now works on all two-handed power attacks, but only has a 10% chance to occur (down from 15%).
+-The Nimble perk now reduces falling damage whether or not you're wearing light armor.
+-Blazing Bash now scales its damage based off of lockpicking skill (instead of One Handed). This makes less practical sense, but is more fair to characters who gain many levels via non-combat skills.
+-Similar to the above, Acid Splash now scales its damage based off of pickpocket skill. Partially in compensation for this, the overall damage has been lowered by around 50%. The reason the reduction is so severe is because damage on this ability was disproportionately high compared to similar abilities.
+-Instead of modifying unarmed damage, Fists of Steel now gives a percentage bonus to melee damage and a percentage reduction to power attack stamina costs. Unarmed-friendly perks will now be found in the pickpocket tree.
+-Renamed "Blade Grasp" to "Blade Catcher" to better fit the new theme of the Pickpocket tree.
+-Blade Catcher will no longer show up in the active magic effects tab.
+-Increased the leveling rate of Destruction and Restoration in the uncapper .ini (1.4, up from 1.0 and 1.1 respectively).
+-Altered the health values for Intense Flames, Deep Freeze, and Disintegrate (30%, 20%, and 10%, down from 40%, 30%, and 25% respectively).
+-To compensate, those perks now have a 20% chance to duplicate any spell cast of the appropriate element.
+-Berserker Rage now triggers even on blocked power attacks.
+
+Additions:
+-Finally created my own test cell. Nobody should probably care about this, but the dummies shout damage numbers into the papyrus log, so if any modders want to use that for tweaking damage numbers to get the right balance, set up logging and use the console to teleport to SPETestCell.
+-Added more global variables to allow AutoPerk to be toggled off on individual trees (in addition to the all-or-nothing toggle from last update)
+-Staves now increase the relevant spell skill when used, and may teach the spell they cast if used enough times.
+-Automatic pickpocket perks now also grant additional unarmed damage in a similar manner to weapon skills. For those using unarmed mods, this feature may be turned off by entering "set SPEUnarmedDamage to 0" in the console and then unequipping a weapon to force the change to take effect.
+-Punching now grants skill in pickpocket and may benefit from on-hit effects. This may conflict with certain mods or quests, so it can be turned off by entering "set SPEUnarmed to 0" in the console and then unequipping a weapon to force the change to take effect.
+-Added a way to turn off skill point rewards on quest completion. Simply type "set SPEQuestRewards to 0" in the console.
+-Similarly, you can now turn off the metal melting feature by typing "set SPEMelting to 0". This allows you to use a more comprehensive or balanced mod, or simply to turn it off if you don't like it.
+-Improved the documentation on these and other configuration variables.
+-Added a small section explaining in better detail what changes are made with the included uncapper .ini file.
+-Added an uninstall script. See the uninstallation section for more details.
+-There is now a Dawnguard patch .esp. Right now it only fixes a bug with improving Dawnguard armor via smithing, but I will add Dawnguard-specific fixes to it as needed.
+
+New Perks: Many. Please see perktrees.html to look at the new trees.
+
+3.1:
+
+Fixes:
+-Imported characters no longer show the "character import successful" message every time the game is loaded.
+-Tower of Strength no longer stops working if you have the Matching Set perk from light armor.
+-Relatedly, Tower of Strength no longer stacks with Matching Set from heavy armor. Guess which perks are named practically the same in the editor!
+-Re-fixed Steady Hand after losing a previous fix in a rollback.
+-Weapon Master now only requires 60 skill instead of 85. It was always supposed to be 60, I'm just dumb.
+-In other "I am dumb" news, Light Foot no longer requires Sneak Attack.
+-All reported brawl bugs should be fixed. Please let me know if you find any more.
+-Spell Charge should operate more reliably and no longer produce log errors.
+-The entire weapon speed system has been redone to maximize compatibility with other mods. There's more info in the 'Misc' section below.
+-Bound swords now benefit from critical hits.
+-Updated the included uncapper file to match the new version.
+-Permanent Mage Armor spells now level alteration when being hit by unarmed attacks (including creature attacks).
+-The Ethereal Arrows perk will now work with crossbows, but they work slightly differently. Instead of deducting magicka for each shot, a large chunk of mana is deducted when the bolts are first created. They also will not automatically replenish themselves before ammo runs out. You must de-equip and re-equip your crossbow to force them to re-summon.
+-Ancestral Awakening now works on vampires. You can also set a default race in the options menu for use with custom races.
+-When taking a Legendary skill, autoperk points are now deducted from your refund (with a slight delay). This behavior can be toggled off in the options menu.
+-Left handed punches now benefit from all the same effects as right handed punches (requires SKSE).
+-Phantom summons no longer conflict with Twin Souls.
+-Matching Set has been updated to incorporate the changes from the 1.9 patch.
+-Abilities that trigger on hit (like the old Frost Armor) will no longer interrupt invisibility or being ethereal.
+-The SPERG Dawnguard Patch now corrects the Matching Set bonuses to work like they do for vanilla Skyrim sets (3 or more pieces instead of 4).
+-Spell Charge no longer removes the dual cast bonus from spells. Unfortunately, fixing this bug prevents it from affecting dual cast spells in any way.
+-Spell Charge now affects the duration of Illusion spells by default, but it may still be set to affect magnitude in the options menu.
+-Efficiency Expert no longer supercharges magic runes.
+-Chain Casting now properly applies its third rank damage buff (it previously used the second rank to calculate damage).
+-NPCs no longer benefit from SPERG's enhancements to several archery perks, which should hopefully make bandit archers much less annoying.
+
+Tweaks:
+-Rallying Presence has been changed to be more distinct from illusion spells.
+-Rallying Presence no longer affects undead, daedra, or automatons without the Master of the Mind perk.
+-Instead of "SPEAuras" you can now set "SPEBrawlMode" to stop anything that might interfere with brawls. SPEAuras no longer exists.
+-Melting arrows into ingots now requires 40 arrows (up from 30). This was done so that arrows are no longer significantly better to craft for skill than other items.
+-The Sneak Attack perk now grants unarmed sneak attacks an 8x damage bonus.
+-Skooma Frenzy now increases movement and attack speed by 100% each (down from 200%). This is part of the weapon speed changes (because Skooma Frenzy will now stack with existing bonuses), but is also a slight reduction in power.
+-Recovery and Wind Walker now show up in the active magic effects tab when taken.
+-The damage bonus from Flowing Current should no longer affect shock damage enchantments. Flame Affinity and Frost Aura still benefit enchantment damage. This was changed to emphasize the role of shock as a pure caster element instead of having it be superior in all ways.
+-Documentation and perk descriptions were overall improved. Most notably, auto perks are now marked with (Auto) or (Novice), etc.
+-In response to user feedback, the perk "Kleptomaniac" has been renamed to "Thief"
+-The Weapon Master perk now has additional abilities for unarmed users.
+-The proc rate for the Dual Dagger Mastery paralyze has been reduced to 3% per hit (down from 5%).
+
+Conjuration:
+-Summoner has several changes. The range and duration increase are now double (down from triple), but the duration affects all conjuration spells. Additionally, the perk now grants 50 extra hit points and a passive aura that increases the damage resistance of nearby friendly summoned creatures.
+-Dark Souls no longer increases the duration of raise dead spells, but instead it grants raised undead the ability to leech health from nearby enemies.
+-Elemental Potency no longer increases the duration of summon spells, but instead it grants 25% resistance to all elements.
+-New Perk, Plague Carrier: Can reanimate higher level undead. Reanimated undead spread a contagious disease that slows movement, drains health and stamina, and increases damage taken by 30%.
+-New Perk, Elemental Mastery: Conjured Atronachs gain new abilities and give you a 30% increase to elemental damage when summoned.
+-Due to significant changes to the tree, perk requirements have also changed.
+-Twin Souls: You can have two atronachs or reanimated zombies. Every six hours, you may summon three atronachs at once or reanimate all corpses around you.
+
+Destruction:
+-Frost Armor has been changed to Frost Aura: Increases armor and frost resistance by 20%. Nearby enemies suffer 75% weakness to frost and 20% reduced movement speed.
+
+Misc:
+-Made the scripts for Rallying Presence and Mage Armor more generic so these effects can be more easily applied to other perks. This was helpful to me, of course, but could be of use to other modders as well.
+-Clarified the perk descriptions for Bone Breaker, Skullcrusher, Savage Strike, and Knowledge Seeker.
+-Several game options have been added for use with the new mod configuration menu. Most options are sufficiently explained in the menu itself, but see the configuration section for details on advanced options.
+-There is now a SPERG Dragonborn Patch.esp file for Dragonborn users. It functions exactly the same as the Dawnguard patch, but for the Dragonborn DLC.
+-To make patch installation easier, I've included an xml script that can automatically copy files when SPERG is installed via NMM or ModOrganizer.
+-For advanced users, I've added an override directory to the SPERG folder which contains files you can use to turn SPERG into a modular design.
+
+3.1.1:
+-Paralyzing Flurry no longer has prerequisites that cannot be met.
+-NPCs now benefit from the original version of Savage Strike.
+-Due to redundancy, Master Trader no longer has a (Msater) tag on it.
+-The install script should no longer copy duplicate or unnecessary files.
+-Ethereal Arrows has been polished to hopefully get rid of a very rare bug which caused it to stop working.
+-Added a new advanced menu option that lets you modify your perk points.
+
+4.0:
+
+This is not an exhaustive list of changes. I've tried to be specific when possible, but nearly every aspect of SPERG has been rewritten and improved for this version. It's practically a new mod.
+
+Fixes & Tweaks:
+-Nearly everything has been rewritten, improved, fixed, and optimized. Almost every script in the mod is affected. Overall performance should be better and bugs should be fewer. The most major changes were made to the config menu, autoperks, version upgrades, character imports, and perks which trigger off an enemy attack.
+-Unarmed damage now benefits from fortify pickpocket effects.
+-Most junk items now melt into ore instead of ingots. This allows the conversion rate to be reduced slightly while still allowing players to get rid of most of the junk in their inventory instead of having a stack of 3+ items stuck waiting for just one more.
+-By popular request, I implemented a fix to the Impact perk so it no longer works 100% of the time. This is an option that can be turned off.
+-You can no longer salvage most equipped items. Left-handed items and shields may still be melted due to a bug in Skyrim. If the bug is ever fixed, they will start working properly.
+-Edits to bound weapon spells have been removed. Instead, they function much like the Mage Armor perk, with players receiving unique SPERG versions instead. This will allow you to use spells from another magic mod instead.
+
+Misc:
+-You can now gain experience for your Speech skill by shouting (in combat only).
+-You can now gain experience for your armor skill just by wearing armor and running around.
+-You can now gain experience for your Alchemy skill just by drinking potions and eating ingredients.
+-You can now gain experience towards permanent stat gains (or Alchemy, if you choose) by eating food.
+-Non-metal items can now be broken down into leather or wood at a tanning rack.
+
+Menu:
+-Many, many new config options have been added. Not all of them are listed here.
+-Phantom summons and Ethereal Arrows have been given a 'manual' option in the menu, with bindable keys to control their activation.
+-The Auto Perk, Refund Auto Perks, Perk Reset Penalty, and Reset Auto Perks options in the config menu have been moved from the General page to the Perk Settings page.
+-Unarmed Mode can now be set to "Hotkey" or "Manual" modes, which allow you to see a Fist weapon in your inventory to check damage and assign hotkeys.
+-"Ethereal Arrows Required" has been moved to the Advanced options page.
+-A menu option has been added to allow you to use vanilla versions of bound weapon spells.
+-Hardcore Mode has been added to Advanced options.
+
+Perks:
+-A significant number of edits to vanilla perks have been removed, and the SPERG versions of those perks are now completely separate. This minimizes mod conflicts and prevents unintended interactions between several perks and NPCs. However, some mods which depend on vanilla perks may stop working without a compatibility patch.
+-The entire autoperk system has been completely reimagined. The first autoperk has no minimum skill requirement and simply enables (or improves) skill-based scaling. Later autoperks are earned at 25, 50, 75, and 100 skill, and each one offers helpful new bonuses or abilities.
+-Nearly every perk tree has been changed in some way. Please refer to perktrees.html for a detailed look at all of the trees as they are now.
+-Recipes from Knowledge Seeker no longer use the smelter. They use the Alchemy Lab instead.
+-Blazing Bash no longer has a 100% chance to reduce incoming damage. It is 30% just like Blinding Bash.
+-Dual Savagery has been slightly reduced in power to bring dual wielding closer in overall damage to other attack styles.
+-The Recovery perk now has an appropriate description on the Active Magic Effects tab.
+-Ward spells now summon a physical shield that creates a ward when blocking. This feature can be turned off.
