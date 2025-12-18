@@ -7,21 +7,18 @@ namespace Lockbash {
         return func(a_ref);
     }
 
-    using RES = RE::BSEventNotifyControl;
-    struct OnHitEventHandler : REX::Singleton<OnHitEventHandler>, public RE::BSTEventSink<RE::TESHitEvent>
+    struct OnHitEventHandler : REX::Singleton<OnHitEventHandler>
     {
-        void RegisterLockBash() {
-            const auto manager{ RE::ScriptEventSourceHolder::GetSingleton() };
-            manager->AddEventSink(this);
-            REX::INFO("Registered {} handler", typeid(RE::TESHitEvent).name());
-        }
-    private:
+        void ProcessLockHit(const RE::TESHitEvent* a_event);
 
-        RES ProcessEvent(const RE::TESHitEvent* a_event, RE::BSTEventSource<RE::TESHitEvent>* a_eventSource) noexcept override;
+    private:       
         float GetBashLevel(RE::Actor* actor);
-        static void ProcessHit(RE::REFR_LOCK* lock, RE::TESObjectREFR* locked, int alarm_value, float xp_gain) noexcept;
-        static void CalculateCrimeGold(RE::Actor* witness);
+        void ProcessHit(RE::REFR_LOCK* lock, RE::TESObjectREFR* locked, int alarm_value, float xp_gain) noexcept;
+        float CalculateCrimeGold(RE::Actor* witness);
+        void CheckCrime(RE::TESObjectREFR* unlockedObj, float radius, RE::Actor* attacker);
+        RE::TESForm* GetOwnerFactionDoor(RE::TESObjectREFR* object);
         bool GenerateNotificationAndSound(RE::LOCK_LEVEL lvl, RE::Actor* actor);
+        bool CanBashLevelBreak(RE::LOCK_LEVEL lvl, RE::Actor* actor);
         inline static const char* break_sound_to_use;
         inline static std::string break_message_success;
         inline static std::string break_message_fail;

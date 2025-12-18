@@ -2,60 +2,7 @@
 #include "config.h"
 
 namespace Lockbash {
-    /*
-    
-EndFunction
 
-Event OnCrosshairRefChange(ObjectReference ref)
-	If ref != NONE && ref.IsLocked()
-		LockLevel = ref.GetLockLevel()
-		If LockLevel <= 100
-			LockedItem = ref
-			GoToState("WatchingForBash")
-			RegisterForSingleUpdate(0.1)
-		EndIf
-	Else
-		GoToState("")
-	EndIf
-EndEvent
-
-State WatchingForBash
-	Event OnUpdate()
-		If PlayerRef.GetAnimationVariableBool("IsBashing") == 1
-			GoToState("ListeningForCrime")
-			If LockLevel <= BashLevel
-				LockedItem.CreateDetectionEvent(PlayerRef, 100)
-				LockedItem.Lock(false)
-				SPEPerkBashLocksDetection01.Cast(PlayerRef)
-				Utility.Wait(0.2) ;let the animation play a bit
-				int soundID = SPEWPNImpactBlunt2HVsWood.Play(LockedItem)
-				Sound.SetInstanceVolume(soundID, 1.0)
-			Else
-				LockedItem.CreateDetectionEvent(PlayerRef, 10)
-				SPEPerkBashLocksDetection02.Cast(PlayerRef)
-				Utility.Wait(0.2) ;let the animation play a bit
-				int soundID = WPNImpactBluntVsWood.Play(LockedItem)
-				Sound.SetInstanceVolume(soundID, 1.0)
-			EndIf
-		Else
-			RegisterForSingleUpdate(0.1)
-		EndIf
-	EndEvent
-EndState
-
-Function OnBashWitnessed(string eventName, string strArg, float numArg, Form sender)
-	;Debug.Trace("Crime already reported.")
-EndFunction
-
-State ListeningForCrime
-	Function OnBashWitnessed(string eventName, string strArg, float numArg, Form sender)
-		GoToState("")
-		;Debug.Trace("Bash witnessed!")
-		(sender as Actor).SendAssaultAlarm()
-	EndFunction
-EndState
-    
-    */
 	constexpr auto very_easy{ RE::LOCK_LEVEL::kVeryEasy };
 	constexpr auto easy{ RE::LOCK_LEVEL::kEasy };
 	constexpr auto average{ RE::LOCK_LEVEL::kAverage };
@@ -71,51 +18,51 @@ EndState
 		{RE::LOCK_LEVEL::kRequiresKey, 255.f }
     };
 
-    RES OnHitEventHandler::ProcessEvent(const RE::TESHitEvent* a_event, RE::BSTEventSource<RE::TESHitEvent>* a_eventSource) noexcept
-    {
+	void OnHitEventHandler::ProcessLockHit(const RE::TESHitEvent* a_event)
+	{
 		using HFlag = RE::TESHitEvent::Flag;
 		if (!a_event) {
-			return RES::kContinue;
+			return;
 		}
 		if (!a_event->cause) {
-			return RES::kContinue;
+			return;
 		}
 		auto actor = a_event->cause.get()->As<RE::Actor>();
 		if (!actor || !actor->IsPlayerRef()) {
-			return RES::kContinue;
+			return;
 		}
 		RE::TESObjectREFR* locked_ref = a_event->target.get();
 		if (!locked_ref) {
-			return RES::kContinue;
+			return;
 		}
 		bool isLocked = locked_ref->IsLocked();
 		if (!isLocked) {
-			return RES::kContinue;
+			return;
 		}
-		
+
 		bool attackCanBreakLock = ActorUtil::IsPowerAttacking(actor) || ActorUtil::IsBashing(actor);
 		if (!attackCanBreakLock) {
-			return RES::kContinue;
+			return;
 		}
 
 		auto weapon_used = RE::TESForm::LookupByID<RE::TESObjectWEAP>(a_event->source);
 		if (!weapon_used) {
-			return RES::kContinue;
+			return;
 		}
 		if (weapon_used) {
 			REX::DEBUG("attacking weapon is: {}", weapon_used->IsHandToHandMelee() ? "nothing" : weapon_used->GetName());
 		}
 
 		if (weapon_used->IsRanged()) {
-			return RES::kContinue;
+			return;
 		}
-		if (GenerateNotificationAndSound(locked_ref->GetLockLevel(), actor)) {
-			ProcessHit(locked_ref->GetLock(), locked_ref, 50, 10);
+		if (actor->HasPerk(Config::Forms::lockbash_perk) || (actor->IsPlayerTeammate() && RE::PlayerCharacter::GetSingleton()->HasPerk(Config::Forms::lockbash_perk))) {
+			if (GenerateNotificationAndSound(locked_ref->GetLockLevel(), actor)) {
+				ProcessHit(locked_ref->GetLock(), locked_ref, 50, 10);
+				CheckCrime(locked_ref, 512, actor);
+			}
 		}
-			
-
-        return RES::kContinue;
-    }
+	}
 
 	float OnHitEventHandler::GetBashLevel(RE::Actor* actor)
 	{
@@ -152,53 +99,121 @@ EndState
 
         const auto player{ RE::PlayerCharacter::GetSingleton() };
         player->UpdateCrosshairs();
-        RE::PlaySound("UILockpickingUnlock");
-        if (locked->IsCrimeToActivate()) {
-            player->StealAlarm(locked->AsReference(), locked->As<RE::TESForm>(), 0, alarm_value, locked->GetOwner(), false);
-            REX::DEBUG("Sent steal alarm ({} gold)", alarm_value);
-        }
+        RE::PlaySound(break_sound_to_use);
+
         if (!Config::Settings::lockbash_no_xp.GetValue()) {
             player->AddSkillExperience(RE::ActorValue::kLockpicking, xp_gain);
             REX::DEBUG("Added {} {} XP", xp_gain, "Lockpicking");
         }
     }
-	void OnHitEventHandler::CalculateCrimeGold(RE::Actor* witness)
+	float OnHitEventHandler::CalculateCrimeGold(RE::Actor* witness)
 	{
 		auto fac = witness->GetCrimeFaction();
+		return static_cast<float>(fac->crimeData.crimevalues.trespassCrimeGold);
 	}
 
-	bool OnHitEventHandler::GenerateNotificationAndSound(RE::LOCK_LEVEL lvl,RE::Actor* actor)
+    void OnHitEventHandler::CheckCrime(RE::TESObjectREFR* unlockedObj, float radius, RE::Actor* attacker)
+    {
+        if (!unlockedObj || !attacker)
+            return;
+        auto gold = RE::BGSDefaultObjectManager::GetSingleton()->GetObject(RE::DEFAULT_OBJECT::kGold);
+        int detected_by_count = 0;
+        // Capture 'this' in the lambda to allow member access
+        RE::TES::GetSingleton()->ForEachReferenceInRange(unlockedObj, radius, [attacker, &unlockedObj, &detected_by_count, this](RE::TESObjectREFR* ref) -> RE::BSContainer::ForEachResult {
+            if (!ref->IsPlayerRef() && ref->Is(RE::FormType::ActorCharacter) && ref->HasKeywordWithType(RE::DEFAULT_OBJECT::kKeywordNPC)) {
+                RE::Actor* const actor = ref->As<RE::Actor>();
+                if (actor && !actor->IsDead() && !actor->IsPlayerTeammate() && actor != attacker) {
+                    RE::TESFaction* const crime_faction = actor->GetCrimeFaction();
+                    int32_t detection_level = actor->RequestDetectionLevel(attacker);
+                    float morality_level = actor->GetActorValue(RE::ActorValue::kMorality);
+                    uint16_t crime_gold = crime_faction ? crime_faction->crimeData.crimevalues.trespassCrimeGold : 50;
+                    auto owner = unlockedObj->GetOwner();
+                    if (!owner) {
+                        owner = GetOwnerFactionDoor(unlockedObj);
+						if (!owner) {
+							owner = crime_faction;
+						}
+                    }
+					if (owner) {
+						if (detection_level > 0 && detected_by_count == 0) {
+							if (morality_level > 0) {
+								if (owner == crime_faction) {
+									if (!crime_faction->IgnoresTrespass()) {
+										if (actor->IsGuard()) {
+											REX::DEBUG("Report: {} [{}]", actor->GetName(), detection_level);
+										}
+										attacker->TrespassAlarm(ref, owner, RE::PackageNS::CRIME_TYPE::kTrespass);
+										detected_by_count++;
+										return RE::BSContainer::ForEachResult::kContinue;
+									}
+								}
+								if (const auto own_fact = owner->As<RE::TESFaction>(); own_fact && owner->Is(RE::FormType::Faction)  && actor->IsInFaction(crime_faction)) {
+									attacker->TrespassAlarm(ref, owner, RE::PackageNS::CRIME_TYPE::kTrespass);
+									detected_by_count++;
+									return RE::BSContainer::ForEachResult::kContinue;
+								}
+							}
+						}
+					}
+                }
+            }
+            return RE::BSContainer::ForEachResult::kContinue;
+        });
+    }
+
+	RE::TESForm* OnHitEventHandler::GetOwnerFactionDoor(RE::TESObjectREFR* object)
 	{
-		float bash_level = GetBashLevel(actor);
-		float lock_level_float = lock_map.at(lvl);
+		if (object->Is(RE::FormType::Door)) {
+			if (const auto teleport = object->extraList.GetByType<RE::ExtraTeleport>(); teleport) {
+				if (const auto teleport_data = teleport->teleportData; teleport_data) {
+					if (const auto linked_door = teleport_data->linkedDoor.get().get(); linked_door) {
+						if (const auto door_cell = linked_door->GetParentCell(); door_cell) {
+							if (const auto door_cell_owner = door_cell->GetOwner(); door_cell_owner) {
+								return door_cell_owner;
+							}							
+						}
+					}
+				}
+			}
+		}
+		return nullptr;
+	}
+
+	bool OnHitEventHandler::GenerateNotificationAndSound(RE::LOCK_LEVEL lvl, RE::Actor* actor)
+	{
 		actor_name = actor->GetName();
 
-		
+		bool canBreak = CanBashLevelBreak(lvl, actor);
 		const char* msg = "test";
 		std::string_view test = "test";
-		if (lock_level_float <= bash_level) {			
+		if (canBreak) {			
 			full_message = std::format("{}{}", actor_name, Config::Settings::break_success_message.GetValue());
 			static std::string break_sound_success_str;
 			break_sound_success_str = Config::Settings::break_sound_success_name.GetValue();
 			break_sound_to_use = break_sound_success_str.c_str();
-			REX::DEBUG("break message: {}, lock level is: {} and bash level is: {}", full_message, lock_level_float, bash_level);
+			REX::DEBUG("break message: {}", full_message);
 			msg = full_message.c_str();
 			RE::SendHUDMessage::ShowHUDMessage(msg);
-			
-			return true;
 		}
 		else {
 			full_message = std::format("{}{}",actor_name, Config::Settings::break_fail_message.GetValue());
 			static std::string break_sound_fail_str;
 			break_sound_fail_str = Config::Settings::break_sound_fail_name.GetValue();
 			break_sound_to_use = break_sound_fail_str.c_str();
-			REX::DEBUG("break message fail: {}, lock level is: {} and bash level is: {}", full_message, lock_level_float, bash_level);
+			REX::DEBUG("break message fail: {}", full_message);
 			msg = full_message.c_str();
 			RE::SendHUDMessage::ShowHUDMessage(msg);
-			return false;
 		}
+		return canBreak;
 		
 		
+	}
+	bool OnHitEventHandler::CanBashLevelBreak(RE::LOCK_LEVEL lvl, RE::Actor* actor)
+	{
+		float bash_level = GetBashLevel(actor);
+		float lock_level_float = lock_map.at(lvl);
+
+		return lock_level_float <= bash_level;
 	}
 }
 

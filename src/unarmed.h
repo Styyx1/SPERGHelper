@@ -1,16 +1,11 @@
 #pragma once
 
 namespace Unarmed {
-	void Install();
-	using EventResult = RE::BSEventNotifyControl;
 
 	// Hit Event to give Pickpocket xp to unarmed hits for SPERG
 	// Credits colinswrath: https://github.com/colinswrath/handtohand/blob/main/src/Events.h
-	struct HitEvent : public REX::Singleton<HitEvent>, public RE::BSTEventSink<RE::TESHitEvent> {
-
-		void Register();
-		EventResult ProcessEvent(const RE::TESHitEvent* event, RE::BSTEventSource<RE::TESHitEvent>*) override;		
-
+	struct HitEvent : public REX::Singleton<HitEvent>{
+		void ProcessUnarmed(const RE::TESHitEvent* event);
 	};
 	struct Helper {
 		static bool IsBeastRace();

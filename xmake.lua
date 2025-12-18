@@ -24,6 +24,7 @@ set_policy("package.requires_lock", true)
 -- set configs
 set_config("skyrim_ae", true)
 set_config("commonlib_toml", true)
+set_config("commonlib_json", true)
 
 -- targets
 target("sperg-helper")
